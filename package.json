@@ -1,0 +1,23 @@
+{
+  "name": "react-style-hot-reload",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --port 3000 --config webpack.config.js --hot --progress --inline --devtool source-map",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "~0.13.2",
+    "react-style": "~0.5.5"
+  },
+  "devDependencies": {
+    "react-hot-loader": "~1.2.6",
+    "webpack": "~1.8.11",
+    "webpack-dev-server": "~1.8.2",
+    "extract-text-webpack-plugin": "~0.3.8",
+    "react-style-webpack-plugin": "~0.4.0"
+  }
+}
