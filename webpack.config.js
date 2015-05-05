@@ -22,7 +22,7 @@ var config = {
   ],
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', ReactStylePlugin.loader(), 'babel?{stage: 0}']}
+      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot?manual', ReactStylePlugin.loader(), 'babel?{stage: 0}']}
     ]
   }
 };
