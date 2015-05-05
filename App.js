@@ -15,5 +15,3 @@ const styles = StyleSheet.create({
     color: 'red'
   }
 });
-
-// How do I update the style tag in the header with the new styles when this component changes?

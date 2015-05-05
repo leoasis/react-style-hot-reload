@@ -1,12 +1,24 @@
 import React from 'react';
-import App from './App';
 import StyleSheet from 'react-style';
+import App from './App';
 
 if (typeof window !== 'undefined') {
-  React.render(<App />, document.getElementById('container'));
-
   const style = document.createElement('style');
-  style.innerHTML = StyleSheet.compile().css;
-  document.head.appendChild(style);
+  function attachCompiledCSS() {
+    style.innerHTML = StyleSheet.compile().css;
+    document.head.appendChild(style);
+  }
+
+  React.render(<App />, document.getElementById('container'));
+  attachCompiledCSS();
+
+  // We are using React Hot Loader "manual" mode so we handle update ourselves:
+  if (module.hot) {
+    module.hot.accept('./App', () => {
+      const FreshApp = require('./App');
+      React.render(<FreshApp />, document.getElementById('container'));
+      attachCompiledCSS();
+    });
+  }
 }
 
