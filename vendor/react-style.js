@@ -93,12 +93,13 @@ var StyleSheet = {
 
     return stylesToCSS(styles.concat(mq), maxLength || 10);
   },
-  // Custom: Reset function to remove all registered styles.
+  // Custom: Destroy function to remove registered styles.
   // Useful to reload styles using HMR.
-  reset: function() {
-    registeredMediaQueries = [];
-    styles = [];
-    mediaQueries = {};
+  destroy: function(stylesToDestroy) {
+    var classNames = Object.keys(stylesToDestroy).map((prop) => stylesToDestroy[prop]);
+    styles = styles.filter(function(style) {
+      return !classNames.filter((className) => className === style.className).length;
+    });
   },
   create: createStyleSheet
 };

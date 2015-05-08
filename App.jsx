@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button';
 
 module.exports = class App extends React.Component {
   render() {
@@ -7,9 +8,12 @@ module.exports = class App extends React.Component {
       <p styles={[styles.paragraph]}>
         An awesome paragraph, look!
       </p>
+      <Button type="primary" text="Hey I'm a button" />
+      {' '}
+      <Button text="Hey I'm another button" />
     </div>
   }
-}
+};
 
 const StyleSheet = require('react-style');
 
@@ -22,3 +26,11 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 });
+
+if (module.hot) {
+    // dispose handler
+    module.hot.dispose(function() {
+        // revoke the side effect
+        StyleSheet.destroy(styles);
+    });
+}
