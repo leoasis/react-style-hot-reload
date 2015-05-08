@@ -4,9 +4,14 @@ import App from './App';
 
 if (typeof window !== 'undefined') {
   const style = document.createElement('style');
+  document.head.appendChild(style);
+
   function attachCompiledCSS() {
     style.innerHTML = StyleSheet.compile().css;
-    document.head.appendChild(style);
+  }
+
+  function removeRegisteredCSS() {
+    StyleSheet.reset();
   }
 
   React.render(<App />, document.getElementById('container'));
@@ -15,8 +20,8 @@ if (typeof window !== 'undefined') {
   // We are using React Hot Loader "manual" mode so we handle update ourselves:
   if (module.hot) {
     module.hot.accept('./App', () => {
-      const FreshApp = require('./App');
-      React.render(<FreshApp />, document.getElementById('container'));
+      removeRegisteredCSS();
+      require('./App');
       attachCompiledCSS();
     });
   }

@@ -14,7 +14,10 @@ var config = {
   },
   resolve: {
     root: __dirname,
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      'react-style$': __dirname + '/vendor/react-style'
+    }
   },
   plugins: [
     // new ReactStylePlugin('bundle.css'), // Avoiding ReactStyle plugin since it doesn't play well with hot reload
