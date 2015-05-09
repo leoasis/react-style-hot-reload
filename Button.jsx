@@ -33,11 +33,3 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 });
-
-if (module.hot) {
-    // dispose handler
-    module.hot.dispose(function() {
-        // revoke the side effect
-        StyleSheet.destroy(styles);
-    });
-}

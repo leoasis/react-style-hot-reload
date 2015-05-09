@@ -23,14 +23,7 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     background: 'green',
-    color: 'white'
+    color: 'white',
+    padding: 4
   }
 });
-
-if (module.hot) {
-    // dispose handler
-    module.hot.dispose(function() {
-        // revoke the side effect
-        StyleSheet.destroy(styles);
-    });
-}
