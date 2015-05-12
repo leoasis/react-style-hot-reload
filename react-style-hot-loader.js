@@ -3,14 +3,20 @@ module.exports = function(src, map) {
 
   if (/StyleSheet\.create/.exec(src)) {
     var addition = [
-      'if (module.hot) {',
-      '  module.hot.dispose(function() {',
-      '    StyleSheet.destroy(styles);',
-      '  });',
-      '}',
+      '(function() {',
+      '  if (module.hot) {',
+      '    var list = [["ReactStyles", StyleSheet.compile().css, ""]];',
+      '    require("style-loader/addStyles")(list);',
+      '    module.hot.accept();',
+      '    module.hot.dispose(function() {',
+      '      StyleSheet.destroy(styles);',
+      '    });',
+      '  }',
+      '})();'
     ].join('\n');
     src = src + '\n' + addition;
   }
 
   this.callback(null, src, map);
 }
+

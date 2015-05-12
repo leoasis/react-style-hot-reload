@@ -2,11 +2,7 @@ var webpack = require('webpack');
 var ReactStylePlugin = require('react-style-webpack-plugin');
 
 var config = {
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000', // WebpackDevServer host and port
-    'webpack/hot/only-dev-server',
-    'index'
-  ],
+  entry: 'index',
   output: {
     filename: 'bundle.js',
     path: __dirname,
@@ -25,7 +21,7 @@ var config = {
   ],
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot?manual', './react-style-hot-loader', ReactStylePlugin.loader(), 'babel?{stage: 0}']}
+      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', './react-style-hot-loader', ReactStylePlugin.loader(), 'babel?{stage: 0}']}
     ]
   }
 };
